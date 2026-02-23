@@ -1,0 +1,23 @@
+/* src/index.css */
+:root {
+  /* Paleta Vitória Rocha Farma */
+  --cor-creme: #F7EEDF;
+  --cor-branco: #FEFEFE;
+  --cor-lilas: #B695C0;
+  --cor-roxo-escuro: #503459;
+  --cor-rosa: #C85DA1;
+  --cor-texto-escuro: #392B3B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  /* Fundo principal e cor de texto padrão aplicados globalmente */
+  background-color: var(--cor-branco);
+  color: var(--cor-texto-escuro);
+}

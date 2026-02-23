@@ -155,7 +155,11 @@ export function Home() {
             @_umafarmaceutica
           </div>
           <div style={{ width: '280px', height: '280px', borderRadius: '50%', backgroundColor: 'var(--cor-lilas)', border: '8px solid var(--cor-creme)', boxShadow: '0 15px 30px rgba(0,0,0,0.1)', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
-            {/* Coloque a tag <img> com a foto dela aqui no futuro */}
+            <img 
+              src="https://gabrielfscarrasco.github.io/Img/IMG-20240223-WA0075.jpg" 
+              alt="Foto da Farmacêutica Vitória Rocha" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         </div>
 

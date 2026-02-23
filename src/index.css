@@ -20,4 +20,64 @@ body {
   /* Fundo principal e cor de texto padrão aplicados globalmente */
   background-color: var(--cor-branco);
   color: var(--cor-texto-escuro);
+}/* --- ANIMAÇÕES --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+/* Efeitos de Hover (Passar o mouse) */
+.btn-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-hover:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* --- RESPONSIVIDADE (MENU MOBILE) --- */
+.desktop-menu { display: flex; align-items: center; gap: 1.5rem; }
+.mobile-menu-btn { display: none; background: none; border: none; font-size: 2rem; color: var(--cor-roxo-escuro); cursor: pointer; }
+.mobile-menu { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-menu { display: none; } /* Esconde o menu normal no celular */
+  .mobile-menu-btn { display: block; } /* Mostra o ícone hamburguer */
+  
+  /* Estilo do menu aberto no celular */
+  .mobile-menu.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--cor-branco);
+    padding: 2rem;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 100;
+    animation: fadeUp 0.3s ease-out forwards;
+  }
+  
+  .mobile-menu a {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--cor-creme);
+    text-align: center;
+    font-size: 1.2rem;
+  }
 }

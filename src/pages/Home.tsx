@@ -146,7 +146,7 @@ export function Home() {
         </div>
       </section>
 
-            {/* 6. SOBRE A AUTORA */}
+                  {/* 6. SOBRE A AUTORA */}
       <section className="animate-fade-up" style={{ padding: '5rem 5%', backgroundColor: 'var(--cor-branco)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '4rem' }}>
         
         {/* Foto com detalhe visual */}
@@ -164,24 +164,26 @@ export function Home() {
           <h2 style={{ color: 'var(--cor-roxo-escuro)', fontSize: '2.2rem', marginBottom: '0.5rem' }}>Quem cria os materiais?</h2>
           
           <p style={{ color: 'var(--cor-texto-escuro)', fontSize: '1.15rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-            Olá! Eu sou a <b>Vitória Rocha</b>, Farmacêutica apaixonada por facilitar o aprendizado. Acredito que a educação na área da saúde não precisa ser maçante.
+            Olá! Eu sou a <b>Vitória Rocha</b>, tenho 24 anos e sou movida pelo propósito de traduzir a complexidade da saúde em um aprendizado acessível e real.
           </p>
           
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '1.5rem' }}>
             <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Farmácia Clínica</span>
-            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Prescrição</span>
+            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Prescrição Farmacêutica</span>
             <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Saúde Mental & Pública</span>
           </div>
 
-          <p style={{ color: '#555', lineHeight: '1.7', marginBottom: '1rem', fontSize: '1rem' }}>
-            Tenho 24 anos, sou cristã e atuo ativamente em projetos sociais na OSC Celeiro de Paz. Sou pós-graduada em Farmácia Clínica e Prescrição Farmacêutica, e atualmente especializanda em Saúde Pública e APS (com foco em ESF). 
+          <p style={{ color: '#555', lineHeight: '1.7', marginBottom: '1.5rem', fontSize: '1rem' }}>
+            Sou pós-graduada em Farmácia Clínica e Prescrição Farmacêutica, e atualmente especializanda em Saúde Pública e APS (com foco em ESF). 
+            Aqui, compartilho conteúdos 100% confiáveis e esquematizados sobre medicamentos, psicotrópicos e substâncias psicoativas.
           </p>
 
-          <p style={{ color: '#555', lineHeight: '1.7', fontSize: '1rem', borderLeft: '4px solid var(--cor-lilas)', paddingLeft: '15px' }}>
-            Compartilho conteúdos 100% confiáveis sobre medicamentos, psicotrópicos e substâncias psicoativas. <b>Crio resumos, mapas mentais e e-books com um único objetivo:</b> fazer você aprender mais rápido e reter o conteúdo para a sua prática clínica!
+          <p style={{ color: '#555', lineHeight: '1.7', fontSize: '1rem', borderLeft: '4px solid var(--cor-lilas)', paddingLeft: '15px', fontStyle: 'italic' }}>
+            Além da ciência, sou cristã e apaixonada por projetos sociais, atuando ativamente na OSC Celeiro de Paz. Meu maior objetivo é entregar e-books e resumos que não apenas ajudem você a passar nas provas, mas que transformem a sua prática clínica.
           </p>
         </div>
       </section>
+
 
             {/* 7. FOOTER */}
       <footer style={{ backgroundColor: 'var(--cor-texto-escuro)', color: 'var(--cor-creme)', textAlign: 'center', padding: '3rem 2rem' }}>

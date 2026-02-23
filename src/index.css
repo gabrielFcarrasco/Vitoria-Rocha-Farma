@@ -81,3 +81,13 @@ body {
     font-size: 1.2rem;
   }
 }
+/* Classe auxiliar para esconder textos no celular */
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+}

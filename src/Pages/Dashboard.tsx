@@ -25,9 +25,9 @@ export function Dashboard() {
       }}>
         <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 'bold' }}>Painel VR Farma</h2>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <span style={{ fontSize: '0.9rem', color: 'var(--cor-lilas)', display: 'none', '@media (minWidth: 768px)': { display: 'block' } }}>
-            Modo Administrador
-          </span>
+          <span className="hide-on-mobile" style={{ fontSize: '0.9rem', color: 'var(--cor-lilas)' }}>
+  Modo Administrador
+</span>
           <button 
             onClick={handleLogout}
             className="btn-hover"

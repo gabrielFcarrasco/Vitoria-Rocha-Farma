@@ -164,7 +164,7 @@ export function Home() {
 
       {/* 7. FOOTER */}
       <footer style={{ backgroundColor: 'var(--cor-texto-escuro)', color: 'var(--cor-creme)', textAlign: 'center', padding: '3rem 2rem' }}>
-        <h3 style={{ marginBottom: '1rem', color: 'var(--cor-lilas)' }}>Vitória Rocha Farma</h3>
+        <h3 style={{ marginBottom: '1rem', color: 'var(--cor-lilas)' }}>Farmacêutica Vitória Rocha</h3>
         <p style={{ fontSize: '0.9rem', color: '#aaa', marginBottom: '2rem' }}>Transformando a forma como você estuda Farmacologia.</p>
         <div style={{ borderTop: '1px solid #503459', paddingTop: '1.5rem', fontSize: '0.8rem', color: '#888' }}>
           © 2026 Todos os direitos reservados. Feito com cuidado para estudantes brilhantes.

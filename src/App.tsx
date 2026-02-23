@@ -1,9 +1,8 @@
-// src/App.tsx
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
-import { ProtectedRoute } from './components/ProtectedRoute'; // 👈 Importamos aqui!
+import { ProtectedRoute } from './components/ProtectedRoute'; 
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
         {/* Rota de Login */}
         <Route path="/login" element={<Login />} />
         
-        {/* Rota Privada: O ProtectedRoute abraça o Dashboard */}
+        {/* Rota Privada (O Painel da Vitória) - Agora está blindada! */}
         <Route 
           path="/admin" 
           element={
@@ -25,7 +24,7 @@ function App() {
           } 
         />
         
-        {/* Fallback */}
+        {/* Rota de fallback */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

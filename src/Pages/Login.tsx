@@ -33,7 +33,7 @@ export function Login() {
       alignItems: 'center', 
       backgroundColor: 'var(--cor-creme)',
       fontFamily: 'sans-serif',
-      padding: '1rem' // Garante que não encoste nas bordas no mobile
+      padding: '1rem' 
     }}>
       
       {/* O Card Central */}

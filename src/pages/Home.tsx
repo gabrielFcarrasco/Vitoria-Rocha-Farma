@@ -146,18 +146,39 @@ export function Home() {
         </div>
       </section>
 
-      {/* 6. SOBRE A AUTORA */}
-      <section style={{ padding: '4rem 5%', backgroundColor: 'var(--cor-branco)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '3rem' }}>
-        <div style={{ width: '250px', height: '250px', borderRadius: '50%', backgroundColor: 'var(--cor-lilas)', border: '8px solid var(--cor-creme)', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
-          {/* Coloque a foto dela aqui no futuro */}
+            {/* 6. SOBRE A AUTORA */}
+      <section className="animate-fade-up" style={{ padding: '5rem 5%', backgroundColor: 'var(--cor-branco)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '4rem' }}>
+        
+        {/* Foto com detalhe visual */}
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', bottom: '-15px', right: '-15px', backgroundColor: 'var(--cor-rosa)', color: 'var(--cor-branco)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', zIndex: 2, boxShadow: '0 4px 10px rgba(200,93,161,0.3)' }}>
+            @_umafarmaceutica
+          </div>
+          <div style={{ width: '280px', height: '280px', borderRadius: '50%', backgroundColor: 'var(--cor-lilas)', border: '8px solid var(--cor-creme)', boxShadow: '0 15px 30px rgba(0,0,0,0.1)', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
+            {/* Coloque a tag <img> com a foto dela aqui no futuro */}
+          </div>
         </div>
-        <div style={{ maxWidth: '500px', textAlign: 'left' }}>
-          <h2 style={{ color: 'var(--cor-roxo-escuro)', fontSize: '2rem', marginBottom: '1rem' }}>Quem cria os materiais?</h2>
-          <p style={{ color: 'var(--cor-texto-escuro)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
-            Olá! Eu sou a <b>Vitória Rocha</b>, Farmacêutica apaixonada por facilitar o aprendizado. 
+
+        {/* Textos da Bio */}
+        <div style={{ maxWidth: '550px', textAlign: 'left' }}>
+          <h2 style={{ color: 'var(--cor-roxo-escuro)', fontSize: '2.2rem', marginBottom: '0.5rem' }}>Quem cria os materiais?</h2>
+          
+          <p style={{ color: 'var(--cor-texto-escuro)', fontSize: '1.15rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+            Olá! Eu sou a <b>Vitória Rocha</b>, Farmacêutica apaixonada por facilitar o aprendizado. Acredito que a educação na área da saúde não precisa ser maçante.
           </p>
-          <p style={{ color: '#666', lineHeight: '1.6' }}>
-            Acredito que a educação na área da saúde não precisa ser maçante. Crio resumos, mapas mentais e e-books estruturados com um único objetivo: fazer você aprender mais rápido e reter o conteúdo para a sua prática clínica.
+          
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '1.5rem' }}>
+            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Farmácia Clínica</span>
+            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Prescrição</span>
+            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Saúde Mental & Pública</span>
+          </div>
+
+          <p style={{ color: '#555', lineHeight: '1.7', marginBottom: '1rem', fontSize: '1rem' }}>
+            Tenho 24 anos, sou cristã e atuo ativamente em projetos sociais na OSC Celeiro de Paz. Sou pós-graduada em Farmácia Clínica e Prescrição Farmacêutica, e atualmente especializanda em Saúde Pública e APS (com foco em ESF). 
+          </p>
+
+          <p style={{ color: '#555', lineHeight: '1.7', fontSize: '1rem', borderLeft: '4px solid var(--cor-lilas)', paddingLeft: '15px' }}>
+            Compartilho conteúdos 100% confiáveis sobre medicamentos, psicotrópicos e substâncias psicoativas. <b>Crio resumos, mapas mentais e e-books com um único objetivo:</b> fazer você aprender mais rápido e reter o conteúdo para a sua prática clínica!
           </p>
         </div>
       </section>

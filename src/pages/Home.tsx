@@ -1,8 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { autorService } from '../config/autorService';
+import type { AutorInfo } from '../config/autorService';
 
 export function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // 1. ESTADO PARA GUARDAR OS DADOS DO BANCO
+  const [autorData, setAutorData] = useState<AutorInfo | null>(null);
+
+  // 2. BUSCA OS DADOS ASSIM QUE A PÁGINA ABRE
+  useEffect(() => {
+    const buscarDados = async () => {
+      const dados = await autorService.getAutorInfo();
+      if (dados) {
+        setAutorData(dados);
+      }
+    };
+    buscarDados();
+  }, []);
+
+  // Arrays de fallback caso o banco esteja vazio
+  const especialidadesPadrao = ['Farmácia Clínica', 'Prescrição Farmacêutica', 'Saúde Mental & Pública'];
+  const especialidadesExibidas = autorData?.especialidades || especialidadesPadrao;
 
   return (
     <div style={{ backgroundColor: 'var(--cor-creme)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -14,9 +34,17 @@ export function Home() {
         padding: '1rem 5%', backgroundColor: 'var(--cor-branco)',
         boxShadow: '0 2px 15px rgba(0,0,0,0.05)'
       }}>
-        <h2 style={{ color: 'var(--cor-roxo-escuro)', margin: 0, fontSize: '1.5rem', fontWeight: '800' }}>
-          Vitória Rocha Farma
-        </h2>
+        {autorData?.logoUrl ? (
+          <img 
+            src={autorData.logoUrl} 
+            alt="Logo do Site" 
+            style={{ maxHeight: '45px', objectFit: 'contain' }} 
+          />
+        ) : (
+          <h2 style={{ color: 'var(--cor-roxo-escuro)', margin: 0, fontSize: '1.5rem', fontWeight: '800' }}>
+            Vitória Rocha Farma
+          </h2>
+        )}
 
         {/* Menu Desktop */}
         <nav className="desktop-menu">
@@ -109,7 +137,6 @@ export function Home() {
         
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
           
-          {/* Card Produto 1 */}
           <div className="card-hover" style={{ backgroundColor: 'var(--cor-branco)', padding: '1.5rem', borderRadius: '16px', width: '340px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)', position: 'relative' }}>
             <span style={{ position: 'absolute', top: '-12px', right: '20px', backgroundColor: 'var(--cor-rosa)', color: 'var(--cor-branco)', padding: '6px 16px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: '900', boxShadow: '0 4px 10px rgba(200,93,161,0.3)' }}>
               MAIS VENDIDO
@@ -128,7 +155,6 @@ export function Home() {
             </button>
           </div>
 
-          {/* Card Produto 2 */}
           <div className="card-hover" style={{ backgroundColor: 'var(--cor-branco)', padding: '1.5rem', borderRadius: '16px', width: '340px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
             <div style={{ height: '200px', backgroundColor: 'var(--cor-creme)', borderRadius: '10px', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px dashed var(--cor-lilas)' }}>
               <span style={{ color: 'var(--cor-lilas)', fontWeight: 'bold' }}>[Capa Psicocards]</span>
@@ -146,17 +172,25 @@ export function Home() {
         </div>
       </section>
 
-                  {/* 6. SOBRE A AUTORA */}
+      {/* 6. SOBRE A AUTORA - AGORA É DINÂMICO! */}
       <section className="animate-fade-up" style={{ padding: '5rem 5%', backgroundColor: 'var(--cor-branco)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '4rem' }}>
         
         {/* Foto com detalhe visual */}
         <div style={{ position: 'relative' }}>
           <div style={{ position: 'absolute', bottom: '-15px', right: '-15px', backgroundColor: 'var(--cor-rosa)', color: 'var(--cor-branco)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', zIndex: 2, boxShadow: '0 4px 10px rgba(200,93,161,0.3)' }}>
-            @_umafarmaceutica
+            <a 
+            href={`https://instagram.com/${(autorData?.instagramUrl || '_umafarmaceutica').replace('@', '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-hover"
+            style={{ position: 'absolute', bottom: '-15px', right: '-15px', backgroundColor: 'var(--cor-rosa)', color: 'var(--cor-branco)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold', zIndex: 2, boxShadow: '0 4px 10px rgba(200,93,161,0.3)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}
+          >
+            {autorData?.instagramUrl || '@_umafarmaceutica'}
+          </a>
           </div>
           <div style={{ width: '280px', height: '280px', borderRadius: '50%', backgroundColor: 'var(--cor-lilas)', border: '8px solid var(--cor-creme)', boxShadow: '0 15px 30px rgba(0,0,0,0.1)', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
             <img 
-              src="https://gabrielfscarrasco.github.io/Img/IMG-20240223-WA0075.jpg" 
+              src={autorData?.imagemUrl || "https://gabrielfscarrasco.github.io/Img/IMG-20240223-WA0075.jpg"} 
               alt="Foto da Farmacêutica Vitória Rocha" 
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -165,33 +199,37 @@ export function Home() {
 
         {/* Textos da Bio */}
         <div style={{ maxWidth: '550px', textAlign: 'left' }}>
-          <h2 style={{ color: 'var(--cor-roxo-escuro)', fontSize: '2.2rem', marginBottom: '0.5rem' }}>Quem cria os materiais?</h2>
+          <h2 style={{ color: 'var(--cor-roxo-escuro)', fontSize: '2.2rem', marginBottom: '0.5rem' }}>
+            Quem cria os materiais?
+          </h2>
           
           <p style={{ color: 'var(--cor-texto-escuro)', fontSize: '1.15rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-            Olá! Eu sou a <b>Vitória Rocha</b>, tenho 24 anos e sou movida pelo propósito de traduzir a complexidade da saúde em um aprendizado acessível e real.
+            {autorData?.textoIntro || 'Olá! Eu sou a Vitória Rocha, tenho 24 anos e sou movida pelo propósito de traduzir a complexidade da saúde em um aprendizado acessível e real.'}
           </p>
           
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '1.5rem' }}>
-            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Farmácia Clínica</span>
-            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Prescrição Farmacêutica</span>
-            <span style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>Saúde Mental & Pública</span>
+            {especialidadesExibidas.map((especialidade, index) => (
+              <span key={index} style={{ backgroundColor: 'var(--cor-creme)', color: 'var(--cor-roxo-escuro)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold' }}>
+                {especialidade}
+              </span>
+            ))}
           </div>
 
           <p style={{ color: '#555', lineHeight: '1.7', marginBottom: '1.5rem', fontSize: '1rem' }}>
-            Sou pós-graduada em Farmácia Clínica e Prescrição Farmacêutica, e atualmente especializanda em Saúde Pública e APS (com foco em ESF). 
-            Aqui, compartilho conteúdos 100% confiáveis e esquematizados sobre medicamentos, psicotrópicos e substâncias psicoativas.
+            {autorData?.textoFormacao || 'Sou pós-graduada em Farmácia Clínica e Prescrição Farmacêutica, e atualmente especializanda em Saúde Pública e APS (com foco em ESF). Aqui, compartilho conteúdos 100% confiáveis e esquematizados sobre medicamentos, psicotrópicos e substâncias psicoativas.'}
           </p>
 
           <p style={{ color: '#555', lineHeight: '1.7', fontSize: '1rem', borderLeft: '4px solid var(--cor-lilas)', paddingLeft: '15px', fontStyle: 'italic' }}>
-            Além da ciência, sou cristã e apaixonada por projetos sociais, atuando ativamente na OSC Celeiro de Paz. Meu maior objetivo é entregar e-books e resumos que não apenas ajudem você a passar nas provas, mas que transformem a sua prática clínica.
+            {autorData?.textoMissao || 'Além da ciência, sou cristã e apaixonada por projetos sociais, atuando ativamente na OSC Celeiro de Paz. Meu maior objetivo é entregar e-books e resumos que não apenas ajudem você a passar nas provas, mas que transformem a sua prática clínica.'}
           </p>
         </div>
       </section>
 
-
-            {/* 7. FOOTER */}
+      {/* 7. FOOTER */}
       <footer style={{ backgroundColor: 'var(--cor-texto-escuro)', color: 'var(--cor-creme)', textAlign: 'center', padding: '3rem 2rem' }}>
-        <h3 style={{ marginBottom: '0.2rem', color: 'var(--cor-lilas)' }}>Farmacêutica Vitória Rocha</h3>
+        <h3 style={{ marginBottom: '0.2rem', color: 'var(--cor-lilas)' }}>
+          {autorData?.nome ? `Farmacêutica ${autorData.nome}` : 'Farmacêutica Vitória Rocha'}
+        </h3>
         <p style={{ fontSize: '0.9rem', color: 'var(--cor-creme)', opacity: 0.8, marginBottom: '1rem', fontWeight: '500' }}>
           CRF: 1-114126-7
         </p>

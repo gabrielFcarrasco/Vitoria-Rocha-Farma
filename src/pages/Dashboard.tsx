@@ -19,7 +19,7 @@ export function Dashboard() {
   const navigate = useNavigate();
   const { uploadImage, loading: uploadLoading } = useCloudinaryUpload();
 
-  const [activeTab, setActiveTab] = useState<'visao-geral' | 'materiais' | 'sobre'>('materiais');
+  const [activeTab, setActiveTab] = useState<'visao-geral' | 'materiais' | 'sobre'>('visao-geral');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Modo Foco (Tela Cheia para Textos do Perfil)
@@ -591,7 +591,7 @@ export function Dashboard() {
         <header className="topbar">
           <button className="hamburger-btn" onClick={() => setIsSidebarOpen(true)}>☰</button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
-            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column' }}><span style={{ fontWeight: 'bold', color: 'var(--cor-texto-escuro)', fontSize: '0.95rem' }}>Dra. {autorData.nome || 'Administrador'}</span><span style={{ fontSize: '0.75rem', color: '#888' }}>Modo Edição</span></div>
+            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column' }}><span style={{ fontWeight: 'bold', color: 'var(--cor-texto-escuro)', fontSize: '0.95rem' }}>Dra. {autorData.nome || 'Vitória Rocha'}</span><span style={{ fontSize: '0.75rem', color: '#888' }}>Modo Edição</span></div>
             <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--cor-lilas)' }}><img src={autorData.imagemUrl} alt="Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
           </div>
         </header>
@@ -718,7 +718,9 @@ export function Dashboard() {
                 </button>
               </div>
               
-              <div className="profile-grid" style={{ display: 'flex', gap: '3rem' }}>
+              {/* O SEGREDO ESTÁ AQUI: flexWrap: 'wrap' ADICIONADO! */}
+              <div className="profile-grid" style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
+                
                 <div className="mobile-full-width" style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                   <div style={{ textAlign: 'center' }}>
                     <h3 style={{ fontSize: '1rem', color: 'var(--cor-texto-escuro)', marginBottom: '1rem' }}>Sua Foto de Perfil</h3>
